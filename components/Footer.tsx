@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Mail, MapPin, Phone, Youtube, Music, Instagram, Twitter, Facebook, MessageCircleHeartIcon } from 'lucide-react';
+import { Mail, MapPin, Phone, Youtube, Music, Instagram, Twitter, Facebook, MessageCircleHeartIcon, MessageCircleMoreIcon } from 'lucide-react';
 import { channelData } from '@/lib/channelData';
 
 export default function Footer() {
@@ -18,22 +18,7 @@ export default function Footer() {
             <p className="text-muted-foreground leading-relaxed">
               {channelData.channel.description}
             </p>
-            <div className="space-y-3 pt-4">
-              <div className="flex items-center gap-3">
-                <Youtube className="w-5 h-5 text-accent" />
-                <a href={channelData.channel.youtubeUrl} target="_blank" rel="noopener noreferrer" 
-                  className="text-muted-foreground hover:text-accent transition-colors">
-                  {channelData.channel.name}
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-accent" />
-                <a href={`mailto:${channelData.contact.email}`} 
-                  className="text-muted-foreground hover:text-accent transition-colors">
-                  {channelData.contact.email}
-                </a>
-              </div>
-            </div>
+            {/* ======= */}
           </div>
 
           {/* Quick Links */}
@@ -79,7 +64,7 @@ export default function Footer() {
 
               <a href={channelData.social.whatsapp} target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors">
-                <MessageCircleHeartIcon size={18} />
+                <MessageCircleMoreIcon size={18} />
                 Whatsapp
               </a>
             </div>
@@ -99,21 +84,26 @@ export default function Footer() {
                   {channelData.contact.phone}
                 </a>
               </div>
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-accent" />
+                <a href={`mailto:${channelData.contact.email}`} 
+                  className="text-muted-foreground hover:text-accent transition-colors">
+                  {channelData.contact.email}
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Footer */}
         <div className="border-t border-border pt-8">
-          <div className="grid md:grid-cols-3 text-sm text-muted-foreground">
+          <div className="grid md:grid-cols-3 text-sm text-muted-foreground cm">
             <p>
               © {new Date().getFullYear()} {channelData.channel.name}. All rights reserved.
+            </p> 
+            <p className="text-right text-muted-foreground text-sm font-semibold cm">
+             Developed by Chhadobeshi Music Team
             </p>
-            {/* <p className="text-center"> </p>
-
-            <p className="text-right text-muted-foreground text-sm font-semibold">
-             Developed by Tarik
-            </p> */}
           </div>
         </div>
       </div>

@@ -1,7 +1,14 @@
 #welcomeT {
-  font-family: MV Boli;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #NOA {
     font-size: 15px;
+}
+.cm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
 }

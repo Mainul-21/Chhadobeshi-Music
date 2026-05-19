@@ -16,7 +16,6 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Chhadobeshi Music',
   description: 'Discover the latest music from Chhadobeshi Music.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
@@ -37,6 +36,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

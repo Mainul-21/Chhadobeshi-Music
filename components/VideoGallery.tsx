@@ -93,10 +93,10 @@ export default function VideoGallery() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-20 text-center">
-          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full mb-6">
+          {/* <div className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full mb-6">
             <Music size={16} className="text-accent" />
             <span className="text-accent font-semibold text-sm tracking-widest">FEATURED SONGS</span>
-          </div>
+          </div> */}
           <h2 className="text-5xl md:text-6xl font-black mb-6">Latest Releases</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Discover the newest Bengali songs, exclusive music videos, and behind the scenes content from {channelData.channel.name}.
