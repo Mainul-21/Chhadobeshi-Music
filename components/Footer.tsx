@@ -101,9 +101,6 @@ export default function Footer() {
             <p>
               © {new Date().getFullYear()} {channelData.channel.name}. All rights reserved.
             </p> 
-            <p className="text-right text-muted-foreground text-sm font-semibold cm">
-             Developed by Chhadobeshi Music Team
-            </p>
           </div>
         </div>
       </div>

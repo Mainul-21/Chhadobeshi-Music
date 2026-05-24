@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { channelData } from '@/lib/channelData';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,12 +37,13 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#home" className="hover:text-accent transition-colors font-medium">Home</Link>
-            <Link href="#videos" className="hover:text-accent transition-colors font-medium">Videos</Link>
-            <Link href="#about" className="hover:text-accent transition-colors font-medium">About</Link>
-            <Link href="#contact" className="hover:text-accent transition-colors font-medium">Contact</Link>
+            <Link href="#home" className="hover:text-accent transition-colors font-medium hover-scale hover-lift">Home</Link>
+            <Link href="#videos" className="hover:text-accent transition-colors font-medium hover-scale hover-lift">Videos</Link>
+            <Link href="#about" className="hover:text-accent transition-colors font-medium hover-scale hover-lift">About</Link>
+            <Link href="#contact" className="hover:text-accent transition-colors font-medium hover-scale hover-lift">Contact</Link>
+            <ThemeToggle />
             <a href={channelData.channel.youtubeUrl} target="_blank" rel="noopener noreferrer" 
-              className="px-6 py-2 bg-accent text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-semibold">
+              className="px-6 py-2 bg-accent text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-semibold hover-scale">
               Subscribe
             </a>
           </div>
@@ -59,10 +61,10 @@ export default function Navigation() {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden border-t border-border py-4 space-y-3">
-            <Link href="#home" className="block hover:text-accent transition-colors py-2 font-medium">Home</Link>
-            <Link href="#videos" className="block hover:text-accent transition-colors py-2 font-medium">Videos</Link>
-            <Link href="#about" className="block hover:text-accent transition-colors py-2 font-medium">About</Link>
-            <Link href="#contact" className="block hover:text-accent transition-colors py-2 font-medium">Contact</Link>
+            <Link href="#home" onClick={() => setIsOpen(false)} className="block hover:text-accent transition-colors py-2 font-medium">Home</Link>
+            <Link href="#videos" onClick={() => setIsOpen(false)} className="block hover:text-accent transition-colors py-2 font-medium">Videos</Link>
+            <Link href="#about" onClick={() => setIsOpen(false)} className="block hover:text-accent transition-colors py-2 font-medium">About</Link>
+            <Link href="#contact" onClick={() => setIsOpen(false)} className="block hover:text-accent transition-colors py-2 font-medium">Contact</Link>
             <a href={channelData.channel.youtubeUrl} target="_blank" rel="noopener noreferrer" 
               className="block px-4 py-2 bg-accent text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-semibold text-center">
               Subscribe on YouTube

@@ -183,7 +183,6 @@ For any questions or customization needs, refer to the code structure and modify
 
 ---
 
-**Built with ❤️ for music artists**
+**Built with ❤️ for independent music artists**
 
-© 2026 Chhadobeshi Music. All rights reserved.
-
+© 2024 Chhadobeshi Music. All rights reserved.

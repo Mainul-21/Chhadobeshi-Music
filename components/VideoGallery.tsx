@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { Play, Heart, ExternalLink, Music } from 'lucide-react';
 import Image from 'next/image';
 import { channelData } from '@/lib/channelData';
+import { VideoGallerySkeleton } from './SkeletonLoader';
+import SocialShare from './SocialShare';
 
 interface YouTubeVideo {
   id: string;
@@ -22,6 +24,13 @@ export default function VideoGallery() {
   const [videos, setVideos] = useState<YouTubeVideo[]>([]);
   const [isLoadingVideos, setIsLoadingVideos] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Filter videos based on search query
+  const filteredVideos = videos.filter((video) =>
+    video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    video.description.toLowerCase().includes(searchQuery.toLowerCase())
+  ).slice(0, 9);
 
   // Fetch YouTube videos on mount
   useEffect(() => {
@@ -92,26 +101,31 @@ export default function VideoGallery() {
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-20 text-center">
-          {/* <div className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full mb-6">
+        <div className="mb-20 text-center fade-in-down">
+          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full mb-6">
             <Music size={16} className="text-accent" />
             <span className="text-accent font-semibold text-sm tracking-widest">FEATURED SONGS</span>
-          </div> */}
+          </div>
           <h2 className="text-5xl md:text-6xl font-black mb-6">Latest Releases</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             Discover the newest Bengali songs, exclusive music videos, and behind the scenes content from {channelData.channel.name}.
           </p>
+          
+          {/* Search Bar */}
+          <div className="max-w-md mx-auto">
+            <input
+              type="text"
+              placeholder="Search songs by name or mood..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-6 py-3 bg-secondary border-2 border-accent/30 rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent transition-all duration-300"
+            />
+          </div>
         </div>
 
         {/* Loading State */}
         {isLoadingVideos && (
-          <div className="col-span-full text-center py-12">
-            <div className="inline-flex items-center space-x-2">
-              <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-              <p className="text-muted-foreground">Loading latest songs...</p>
-              <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-            </div>
-          </div>
+          <VideoGallerySkeleton />
         )}
 
         {/* Error State */}
@@ -122,9 +136,9 @@ export default function VideoGallery() {
         )}
 
         {/* Video Grid */}
-        {!isLoadingVideos && videos.length > 0 && (
+        {!isLoadingVideos && filteredVideos.length > 0 && (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {videos.map((video) => (
+          {filteredVideos.map((video) => (
             <div key={video.id} className="group cursor-pointer h-full">
               <div 
                 className="relative h-56 md:h-64 bg-secondary rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-accent/30"
@@ -171,7 +185,7 @@ export default function VideoGallery() {
                 </div> */}
 
                 {/* Action Buttons */}
-                <div className="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity mb-3">
                   <button 
                     onClick={() => toggleLike(video.id)}
                     className={`flex-1 py-3 rounded-lg transition-all text-sm font-bold flex items-center justify-center gap-2 ${
@@ -189,6 +203,15 @@ export default function VideoGallery() {
                     Play
                   </a>
                 </div>
+
+                {/* Social Share */}
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                  <SocialShare 
+                    title={video.title}
+                    videoId={video.youtubeId}
+                    description={video.description}
+                  />
+                </div>
               </div>
             </div>
           ))}
@@ -196,10 +219,12 @@ export default function VideoGallery() {
         )}
 
         {/* Empty State */}
-        {!isLoadingVideos && videos.length === 0 && !error && (
+        {!isLoadingVideos && filteredVideos.length === 0 && !error && (
           <div className="col-span-full text-center py-12">
             <Music size={48} className="mx-auto text-muted-foreground mb-4 opacity-50" />
-            <p className="text-muted-foreground" id='NOA'>No videos available. Please try to reload this page.</p>
+            <p className="text-muted-foreground">
+              {searchQuery ? 'No songs found matching your search.' : 'No videos available. Please configure your YouTube API key.'}
+            </p>
           </div>
         )}
 

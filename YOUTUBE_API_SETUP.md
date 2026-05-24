@@ -115,4 +115,3 @@ YouTube Data API v3 has quota limits:
 - Always use environment variables
 - The API key is only used server-side in `/app/api/youtube/route.ts`
 - Frontend requests go through the backend route for security
-Created by Tarik

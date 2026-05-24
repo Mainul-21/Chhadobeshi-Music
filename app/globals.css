@@ -64,6 +64,7 @@
   --chart-3: #555555;
   --chart-4: #c9a961;
   --chart-5: #999999;
+  --radius: 0.625rem;
   --sidebar: #0a0a0a;
   --sidebar-foreground: #ffffff;
   --sidebar-primary: #d4af37;
@@ -71,6 +72,42 @@
   --sidebar-accent: #1a1a1a;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #222222;
+  --sidebar-ring: #d4af37;
+}
+
+.light {
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #f5f5f5;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #d4af37;
+  --primary-foreground: #000000;
+  --secondary: #f0f0f0;
+  --secondary-foreground: #000000;
+  --muted: #d9d9d9;
+  --muted-foreground: #666666;
+  --accent: #d4af37;
+  --accent-foreground: #000000;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e0e0e0;
+  --input: #f5f5f5;
+  --ring: #d4af37;
+  --chart-1: #d4af37;
+  --chart-2: #666666;
+  --chart-3: #999999;
+  --chart-4: #c9a961;
+  --chart-5: #cccccc;
+  --radius: 0.625rem;
+  --sidebar: #f5f5f5;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #d4af37;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #f0f0f0;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #e0e0e0;
   --sidebar-ring: #d4af37;
 }
 
@@ -116,6 +153,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   * {
     @apply border-border outline-ring/50;
   }
@@ -123,7 +164,6 @@
     @apply bg-background text-foreground;
     background: 
       linear-gradient(135deg, #000000 0%, #0a0a0a 30%, #050505 70%, #000000 100%);
-    background-attachment: fixed;
     position: relative;
   }
   
@@ -142,7 +182,37 @@
   }
 }
 
-/* Music-themed accent patterns */
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e6c547;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-color: #d4af37 #0a0a0a;
+  scrollbar-width: thin;
+}
+
+/* Music-themed animations */
 @keyframes musicPulse {
   0%, 100% {
     opacity: 0.1;
@@ -161,10 +231,253 @@
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5), 0 0 10px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.5);
+  }
+}
+
 .music-bg-accent {
   animation: musicPulse 4s ease-in-out infinite;
 }
 
 .music-float {
   animation: musicFloat 6s ease-in-out infinite;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-in-down {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.glow-accent {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.shimmer-loading {
+  background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Hover effects */
+.hover-scale {
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-lift {
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+.hover-glow {
+  transition: color 0.2s ease-out;
+  will-change: color;
+}
+
+.hover-glow:hover {
+  color: #d4af37;
+}
+
+.hover-text-accent {
+  transition: color 0.3s ease;
+}
+
+.hover-text-accent:hover {
+  color: #d4af37;
+}
+
+/* Button effects - GPU accelerated */
+.btn-accent {
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+.btn-accent:hover {
+  transform: translateY(-2px);
+}
+
+/* Section transitions - optimized for performance */
+section {
+  will-change: auto;
+}
+
+/* Remove expensive hover effects on sections */
+
+/* Back to top button - optimized */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: #d4af37;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 40;
+  will-change: transform;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 45px;
+    height: 45px;
+  }
+  
+  /* Responsive text sizes */
+  h1 {
+    font-size: 2.25rem !important;
+  }
+  
+  h2 {
+    font-size: 1.875rem !important;
+  }
+  
+  /* Touch-friendly buttons */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing on mobile */
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Improve grid layouts on mobile */
+  .grid {
+    gap: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.875rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  section {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }

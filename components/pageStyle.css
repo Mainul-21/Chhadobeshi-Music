@@ -12,3 +12,9 @@
   align-items: center;
   
 }
+.artistImage{
+  height: 100px;
+  width: 100%;
+  background-image: url("/public/artist.jpg");
+  background-position: center;
+}
