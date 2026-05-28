@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { channelData } from '@/lib/channelData';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -50,15 +51,11 @@ export async function GET(request: Request) {
     const statistics = channel.statistics;
 
     const channelData = {
-      name: snippet.title,
-      description: snippet.description,
-      image: snippet.thumbnails?.high?.url || '',
       subscriberCount: statistics.subscriberCount || '0',
       videoCount: statistics.videoCount || '0',
       viewCount: statistics.viewCount || '0',
     };
 
-    console.log('[v0] Successfully fetched channel data:', channelData.name);
     return NextResponse.json({ channel: channelData });
   } catch (error) {
     console.error('[v0] Error fetching channel:', error);

@@ -11,12 +11,7 @@ export default function NotFound() {
       </div>
 
       <div className="text-center max-w-2xl fade-in-up">
-        {/* Icon */}
-        <div className="mb-8 flex justify-center">
-          <div className="w-24 h-24 bg-accent/20 rounded-full flex items-center justify-center">
-            <Music size={48} className="text-accent" />
-          </div>
-        </div>
+       
 
         {/* 404 Text */}
         <h1 className="text-8xl md:text-9xl font-black text-accent mb-4">404</h1>

@@ -89,14 +89,13 @@ export default function AboutSection() {
           </div>
 
           {/* Right - Visual */}
-          <div className="relative h-109">
-            <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 via-transparent to-transparent rounded-2xl blur-3xl"></div>
-            <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-accent/10 to-transparent border border-accent/30 flex items-center justify-center">
+          <div className="relative h-109 rounded-3x">
+            <div className="relative w-full h-full rounded-5x bg-gradient-to-br from-accent/10 to-transparent border border-accent/30 flex items-center justify-center">
              <Image
                 src={realChannelData?.image || '/artist.jpg'}
                 alt={channelData.owner.name}
                 fill
-                className="artistImage"
+                className="artistImage "
               />
               
             </div>

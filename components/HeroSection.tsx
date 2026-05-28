@@ -45,7 +45,7 @@ export default function HeroSection() {
   }, []);
 
   // Use real data if available, fallback to static data
-  const displayName = realChannelData?.name || channelData.channel.name;
+  const displayName = channelData.channel.name;
   const displaySubscribers = realChannelData ? formatNumber(realChannelData.subscriberCount) : channelData.channel.subscriberCount;
   const displayVideos = realChannelData ? formatNumber(realChannelData.videoCount) : channelData.channel.videoCount;
   const displayViews = realChannelData ? formatNumber(realChannelData.viewCount) : channelData.channel.totalViews;

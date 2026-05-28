@@ -64,7 +64,6 @@ export async function GET(request: NextRequest) {
       title: item.snippet.title,
       description: item.snippet.description,
       thumbnail: item.snippet.thumbnails?.medium?.url || '',
-      publishedAt: item.snippet.publishedAt,
       channelTitle: item.snippet.channelTitle,
     }));
 

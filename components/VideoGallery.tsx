@@ -112,7 +112,7 @@ export default function VideoGallery() {
           </p>
           
           {/* Search Bar */}
-          <div className="max-w-md mx-auto">
+          {/* <div className="max-w-md mx-auto">
             <input
               type="text"
               placeholder="Search songs by name or mood..."
@@ -120,7 +120,7 @@ export default function VideoGallery() {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-6 py-3 bg-secondary border-2 border-accent/30 rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent transition-all duration-300"
             />
-          </div>
+          </div> */}
         </div>
 
         {/* Loading State */}
@@ -131,7 +131,7 @@ export default function VideoGallery() {
         {/* Error State */}
         {error && !isLoadingVideos && (
           <div className="col-span-full text-center py-12">
-            <p className="text-muted-foreground">{error}</p>
+             <VideoGallerySkeleton />
           </div>
         )}
 
@@ -179,11 +179,7 @@ export default function VideoGallery() {
                   </h3>
                   <p className="text-sm text-muted-foreground mt-1">{video.description}</p>
                 </div>
-                
-                {/* <div className="text-sm text-muted-foreground border-t border-border pt-3">
-                  <span>{video.publishedAt}</span>
-                </div> */}
-
+              
                 {/* Action Buttons */}
                 <div className="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity mb-3">
                   <button 
@@ -221,23 +217,10 @@ export default function VideoGallery() {
         {/* Empty State */}
         {!isLoadingVideos && filteredVideos.length === 0 && !error && (
           <div className="col-span-full text-center py-12">
-            <Music size={48} className="mx-auto text-muted-foreground mb-4 opacity-50" />
-            <p className="text-muted-foreground">
-              {searchQuery ? 'No songs found matching your search.' : 'No videos available. Please configure your YouTube API key.'}
-            </p>
+             <VideoGallerySkeleton />
           </div>
         )}
 
-        {videos.length > 0 && (
-        <div className="mt-20 text-center">
-          <a href={channelData.channel.youtubeUrl} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 px-12 py-5 bg-gradient-to-r from-accent to-accent/80 text-primary-foreground rounded-xl hover:opacity-90 transition-all font-bold text-lg shadow-2xl hover:shadow-accent/40 hover:scale-105">
-            <Music size={24} />
-            <span>Subscribe & Watch All Songs on YouTube</span>
-            <ExternalLink size={20} />
-          </a>
-        </div>
-        )}
       </div>
     </section>
   );

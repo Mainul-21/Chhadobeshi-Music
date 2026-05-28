@@ -78,13 +78,13 @@ export default function Footer() {
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
                 <span className="text-muted-foreground">{channelData.contact.location}</span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-accent" />
                 <a href={`tel:${channelData.contact.phone}`} className="text-muted-foreground hover:text-accent transition-colors">
                   {channelData.contact.phone}
                 </a>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-accent" />
                 <a href={`mailto:${channelData.contact.email}`} 
                   className="text-muted-foreground hover:text-accent transition-colors">
@@ -96,8 +96,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-border pt-8">
-          <div className="grid md:grid-cols-3 text-sm text-muted-foreground cm">
+        <div className="border-t border-border pt-1">
+          <div className="text-sm text-muted-foreground cm"><br />
             <p>
               © {new Date().getFullYear()} {channelData.channel.name}. All rights reserved.
             </p> 
