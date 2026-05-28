@@ -23,7 +23,7 @@ export default function HeroSection() {
     const fetchChannelData = async () => {
       try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 9000); // 9 second timeout
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
         
         const response = await fetch(`/api/channel?channelId=${channelData.channel.youtubeChannelId}`, {
           signal: controller.signal
@@ -64,16 +64,11 @@ export default function HeroSection() {
         <div className="max-w-3xl fade-in-up">
           {/* Content */}
           <div className="space-y-8">
-            {/* Music Icon Badge */}
-            {/* <div className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full w-fit">
-              <Music size={18} className="text-accent" />
-              <span className="text-accent font-semibold text-sm tracking-widest">Music</span>
-            </div> */}
 
               <p className="text-accent font-semibold text-4xl tracking-widest fade-in-down" id='welcomeT'>WELCOME TO</p>
             {/* Main Heading */}
             <div className="space-y-4 fade-in-up">
-              <h1 className="text-6xl md:text-7xl font-black leading-tight text-balance hover-text-accent">
+              <h1 className="text-6x md:text-7xl text-accent leading-tight text-balance">
                 {displayName}
               </h1>
             </div>
