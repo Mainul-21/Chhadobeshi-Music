@@ -2,7 +2,6 @@
 
 import { Music, Award, Users, Target } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { channelData } from '@/lib/channelData';
 
 interface ChannelInfo {
@@ -57,11 +56,8 @@ export default function AboutSection() {
 
         {/* Main Content */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          {/* Right - Artist Image */}
-          
-
           {/* Left - Text */}
-          <div className="space-y-6 order-1 md:order-1 fade-in-left">
+          <div className="space-y-6">
             
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Sudhanshu Barman is a song writer and music creator known for blending romantic melodies, emotional sad songs, and modern musical styles. His work focuses on expressing real feelings and stories through music that connects deeply with listeners. <br /> <br />From soulful romantic tracks to heartfelt emotional songs, he creates a unique sound that mixes tradition with a modern touch. Through original compositions, covers, and creative music content, Sudhanshu continues to explore and share meaningful musical experiences.
@@ -89,22 +85,21 @@ export default function AboutSection() {
           </div>
 
           {/* Right - Visual */}
-          <div className="relative h-109 rounded-3x">
-            <div className="relative w-full h-full rounded-5x bg-gradient-to-br from-accent/10 to-transparent border border-accent/30 flex items-center justify-center">
-             <Image
-                src={realChannelData?.image || '/artist.jpg'}
-                alt={channelData.owner.name}
-                fill
-                className="artistImage "
-              />
-              
+          <div className="relative h-96">
+            <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 via-transparent to-transparent rounded-2xl blur-3xl"></div>
+            <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-accent/10 to-transparent border border-accent/30 flex items-center justify-center">
+              <div className="text-center space-y-4">
+                <Music size={64} className="mx-auto text-accent" />
+                <p className="text-2xl font-black">INDEPENDENT</p>
+                <p className="text-sm text-muted-foreground">Authentic Music Creation</p>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-4 gap-6">
-          <div className="p-8 rounded-2xl bg-secondary/50 border-2 border-accent/20 hover:border-accent hover:shadow-lg transition-all group hover-lift">
+          <div className="p-8 rounded-2xl bg-secondary/50 border-2 border-accent/20 hover:border-accent hover:shadow-lg transition-all group">
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-all">
               <Music className="w-6 h-6 text-accent" />
             </div>
@@ -114,7 +109,7 @@ export default function AboutSection() {
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-secondary/50 border-2 border-accent/20 hover:border-accent hover:shadow-lg transition-all group hover-lift">
+          <div className="p-8 rounded-2xl bg-secondary/50 border-2 border-accent/20 hover:border-accent hover:shadow-lg transition-all group">
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-all">
               <Award className="w-6 h-6 text-accent" />
             </div>
@@ -124,7 +119,7 @@ export default function AboutSection() {
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-secondary/50 border-2 border-accent/20 hover:border-accent hover:shadow-lg transition-all group hover-lift">
+          <div className="p-8 rounded-2xl bg-secondary/50 border-2 border-accent/20 hover:border-accent hover:shadow-lg transition-all group">
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-all">
               <Users className="w-6 h-6 text-accent" />
             </div>
@@ -134,7 +129,7 @@ export default function AboutSection() {
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-secondary/50 border-2 border-accent/20 hover:border-accent hover:shadow-lg transition-all group hover-lift">
+          <div className="p-8 rounded-2xl bg-secondary/50 border-2 border-accent/20 hover:border-accent hover:shadow-lg transition-all group">
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-all">
               <Target className="w-6 h-6 text-accent" />
             </div>
