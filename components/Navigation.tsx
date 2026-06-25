@@ -27,16 +27,23 @@ export default function Navigation() {
               />
             </div>
             <div className="hidden sm:block">
-              <p className="text-xl font-semibold text-accent tracking-wider">{channelData.channel.name}</p>
-              {/* <p className="text-base font-black tracking-tight">{channelData.channel.name}</p> */}
+              <p className="text-lg font-black tracking-tight" style={{
+              "fontFamily":"Segoe Print",
+              "fontSize":"30px"
+            }}>{channelData.channel.name}</p>
             </div>
             <div className="sm:hidden">
-              <p className="text-lg font-black tracking-tight">{channelData.channel.name}</p>
+              <p className="text-lg font-black tracking-tight" style={{
+              "fontFamily":"Segoe Print",
+              "fontSize":"20px"
+            }}>{channelData.channel.name}</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8" style={{
+              "fontSize":"17px"
+            }}>
             <Link href="#home" className="hover:text-accent transition-colors font-medium hover-scale hover-lift">Home</Link>
             <Link href="#videos" className="hover:text-accent transition-colors font-medium hover-scale hover-lift">Videos</Link>
             <Link href="#about" className="hover:text-accent transition-colors font-medium hover-scale hover-lift">About</Link>

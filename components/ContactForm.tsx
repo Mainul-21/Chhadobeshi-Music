@@ -159,7 +159,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 sm:py-4 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 font-bold text-base sm:text-lg transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-3 sm:py-4 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 font-bold text-base sm:text-lg transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2 hover-scale"
           >
             <Send size={20} />
             <span>{isLoading ? 'Sending...' : 'Send Message'}</span>

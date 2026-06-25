@@ -5,7 +5,6 @@ import { Play, Heart, ExternalLink, Music } from 'lucide-react';
 import Image from 'next/image';
 import { channelData } from '@/lib/channelData';
 import { VideoGallerySkeleton } from './SkeletonLoader';
-import SocialShare from './SocialShare';
 
 interface YouTubeVideo {
   id: string;
@@ -198,15 +197,6 @@ export default function VideoGallery() {
                     <Play size={16} />
                     Play
                   </a>
-                </div>
-
-                {/* Social Share */}
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                  <SocialShare 
-                    title={video.title}
-                    videoId={video.youtubeId}
-                    description={video.description}
-                  />
                 </div>
               </div>
             </div>
